@@ -28,6 +28,7 @@ export const signupuser = (payload) => (dispatch) => {
                     email: payload.signupemail,
                     password: payload.signuppassword,
                     id: payload.id,
+                    role: payload.role,
                     username:payload.username,
                     agreeterms: true
                 },
@@ -64,6 +65,7 @@ export const signupuser = (payload) => (dispatch) => {
                         email: payload.signupemail,
                         password: payload.signuppassword,
                         id: payload.id,
+                        role: payload.role,
                         username:payload.username,
                         agreeterms: true
                     },

@@ -1,11 +1,13 @@
 import {applyMiddleware, combineReducers, compose, legacy_createStore} from "redux"
-import { signUpReducer } from "./signup/reducer"
 import thunk from "redux-thunk"
-import { loginReducer } from "./login/reducer";
+import { reducer as loginReducer } from "./login/reducer";
+import { reducer as signUpReducer } from "./signup/reducer"
+import { reducer as marriageReducer } from "./getData/reducer"
 
 var rootReducer = combineReducers({
  signup:signUpReducer,
  login:loginReducer,
+ marriage:marriageReducer,
 });
 
 export const store = legacy_createStore(rootReducer, 

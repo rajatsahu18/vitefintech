@@ -10,10 +10,11 @@ const loginstate = {
     loginError: false,
     email: logindata? logindata.email : "",
     id:logindata? logindata.id : "",
+    role: logindata ? logindata.role: "",
     username: logindata? logindata.username : "",
 }
 
-export const loginReducer = (state = loginstate, action) => {
+export const reducer = (state = loginstate, action) => {
     const { type, payload } = action;
     switch (type) {
         case LOGIN_SUCCESS:
@@ -22,6 +23,7 @@ export const loginReducer = (state = loginstate, action) => {
                 loginAuth: true,
                 loginLoading: false,
                 email: payload.email,
+                role: payload.role,
                 id: payload.id,
                 username:payload.username
             };
@@ -33,6 +35,7 @@ export const loginReducer = (state = loginstate, action) => {
                 loginError: true,
                 email: "",
                 id: "",
+                role:"",
                 username: ""
             };
         case LOGIN_REQUEST:

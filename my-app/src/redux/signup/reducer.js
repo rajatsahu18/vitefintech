@@ -4,11 +4,12 @@ const signupinitstate = {
     signupAuth: false,
     signupLoading: false,
     signupError: false,
+    role: "",
     email: "",
     id: ""
 }
 
-export const signUpReducer = (state = signupinitstate, action) => {
+export const reducer = (state = signupinitstate, action) => {
     const { type, payload } = action;
     switch (type) {
         case SIGNUP_SUCCESS:
@@ -17,6 +18,7 @@ export const signUpReducer = (state = signupinitstate, action) => {
                 signupAuth: true,
                 signupLoading: false,
                 email: payload.email,
+                role: payload.role,
                 id: payload.id,
             };
         case SIGNUP_REQUEST:
@@ -32,6 +34,7 @@ export const signUpReducer = (state = signupinitstate, action) => {
                 signupLoading: false,
                 email: "",
                 password: "",
+                role:"",
                 id: ""
             };
         default:

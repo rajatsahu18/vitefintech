@@ -22,7 +22,8 @@ export const loginuser = (payload)=>(dispatch)=>{
         method:"get",
         params:{
            email:payload.email,
-           password:payload.password
+           password:payload.password,
+           role: payload.role,
         }
     }
     axios(config).then(res=>{
@@ -37,6 +38,7 @@ export const loginuser = (payload)=>(dispatch)=>{
                 let localdata = {
                     email:payload.email,
                     password:payload.password,
+                    role: payload.role,
                     loginAuth:true,
                     id:data.id,
                     username:data.username

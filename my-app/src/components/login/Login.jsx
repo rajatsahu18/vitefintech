@@ -8,13 +8,14 @@ import { Loader } from '../loader/Loader';
 const logininput = {
   loginemail:"",
   loginpassword:"",
-  stay:false
+  stay:false,
+  role:"",
 }; 
 
 export const Login = () => {
 const [query,setquery] = React.useState(logininput);
 const dispatch = useDispatch();
-const {loginLoading, loginAuth, id, username } = useSelector(state=>state.login, shallowEqual)
+const {loginLoading, loginAuth } = useSelector(state=>state.login, shallowEqual)
 const handlechangelogin = (e)=>{
     const {name,value,type,checked} = e.target;
     let val = type === "checkbox" ? checked : value;
@@ -30,7 +31,8 @@ const handlelogin = ()=>{
           let payload = {
               email:query.loginemail,
               password:query.loginpassword,
-              stay:query.stay
+              stay:query.stay,
+              role:query.role,
           }
           dispatch(loginuser(payload));
           setquery(logininput);
@@ -41,6 +43,9 @@ const handlelogin = ()=>{
         }
         else if(query.loginpassword === ""){
             alert("Please Enter Password");
+        }
+        else if(query.role === ""){
+            alert("Please Select Role");
         }
     }
 }
@@ -79,6 +84,14 @@ if(loginLoading){
                 </div>
                 <div style={{ flexBasis: "12%", marginTop: "5%", width: "80%", marginLeft: "10%", marginRight: "10%" }}>
                     <input type="password" name="loginpassword" onChange={handlechangelogin} value={query.loginpassword} required style={{ width: "92%", height: "90%", paddingLeft: "5%", fontSize:'20px' }} placeholder="Enter Password" />
+                </div>
+                <div style={{ flexBasis: "12%",  marginTop:"5%",width:"80%",marginLeft:"10%",marginRight:"10%"  }}>
+                    <select name="role" onChange={handlechangelogin} required style={{width:"99%",height:"90%",paddingLeft:"5%", fontSize:'20px'}}>
+                        <option value="">Select Role</option>
+                        <option value="r1">R1 as admin</option>
+                        <option value="r2">R2 as user</option>
+                        <option value="r3">R3 as user</option>
+                    </select>
                 </div>
                 <div style={{ flexBasis: "12%", marginTop: "1%", width: "80%", marginLeft: "10%", marginRight: "10%", display: "flex" }}>
                     <div style={{ flexBasis: "10%", textAlign: "center" }}>
